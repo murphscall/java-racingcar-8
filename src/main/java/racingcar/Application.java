@@ -1,7 +1,14 @@
 package racingcar;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<String> carNames = InputView.inputCarNames();
+        int tryCount = InputView.tryCount();
+
+        CarGame carGame = new CarGame(carNames);
+        carGame.start(tryCount);
+        System.out.println(carGame.getCars());
     }
 }
