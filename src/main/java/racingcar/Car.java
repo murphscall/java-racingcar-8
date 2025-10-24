@@ -16,13 +16,25 @@ public class Car {
 
     public void move() {
         int randomNumber = generatorRandomNumber();
-        if (randomNumber > 4){
+        if (randomNumber >= 4){
             position++;
         }
     }
 
     private int generatorRandomNumber(){
         return Randoms.pickNumberInRange(0,9);
+    }
+
+    public boolean isAtPosition(int targetPosition){
+        return this.position == targetPosition;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
