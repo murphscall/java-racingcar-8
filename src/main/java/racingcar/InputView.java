@@ -12,13 +12,17 @@ public class InputView {
     }
 
     public static int tryCount() {
-        System.out.println("게임을 얼마나 몇 번 진행할까요?");
+        System.out.println("게임을 몇 번 진행할까요?");
         String input = Console.readLine();
 
         try {
-            return Integer.parseInt(input);
+            int tryCount = Integer.parseInt(input);
+            if(tryCount < 0) {
+                throw new IllegalArgumentException("가능한 횟수를 입력해주세요.");
+            }
+            return tryCount;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자를 입력해주세요");
+            throw new IllegalArgumentException("횟수는 숫자를 입력해주세요");
         }
     }
 }
