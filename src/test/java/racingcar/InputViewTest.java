@@ -13,4 +13,11 @@ class InputViewTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThrows(IllegalArgumentException.class, () -> InputView.tryCount());
     }
+
+	@Test
+	void 진행횟수가_숫자가_아니면_예외가_발생한다(){
+		String input = "예외발생";
+		System.setIn(new ByteArrayInputStream(input.getBytes()));
+		assertThrows(IllegalArgumentException.class, () -> InputView.tryCount());
+	}
 }
