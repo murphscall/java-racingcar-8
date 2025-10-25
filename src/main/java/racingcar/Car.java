@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
 
     private static final int MOVE_THRESHOLD = 4;
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 9;
 
     private final String name;
     private int position;
@@ -16,16 +18,16 @@ public class Car {
 
     public void move() {
         int randomNumber = generatorRandomNumber();
-        if (randomNumber >= 4){
+        if (randomNumber >= MOVE_THRESHOLD) {
             position++;
         }
     }
 
-    private int generatorRandomNumber(){
-        return Randoms.pickNumberInRange(0,9);
+    private int generatorRandomNumber() {
+        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
-    public boolean isAtPosition(int targetPosition){
+    public boolean isAtPosition(int targetPosition) {
         return this.position == targetPosition;
     }
 
