@@ -1,40 +1,29 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-	@Test
-	void 랜덤_숫자가_4이상이면_전진한다() {
-		Car car = new Car("testCar") {
-			@Override
-			protected int generatorRandomNumber() {
-				return 4;
-			}
-		};
+    @Test
+    void 랜덤_숫자가_4이상이면_전진한다() {
+        Car car = new Car("testCar");
+        MoveStrategy alwaysMoveStrategy = () -> true;
 
-		car.move();
+        car.move(alwaysMoveStrategy);
 
-		assertThat(car.getPosition()).isEqualTo(1);
-	}
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 
-	@Test
-	void 랜덤_숫자가_4미만일_때_정지한다() {
-		// given
-		Car car = new Car("testCar") {
-			@Override
-			protected int generatorRandomNumber() {
-				return 2;
-			}
-		};
+    @Test
+    void 랜덤_숫자가_4미만이면_위치가_변하지않는다() {
+        Car car = new Car("testCar");
+        MoveStrategy alwaysMoveStop = () -> false;
 
-		// when
-		car.move();
+        car.move(alwaysMoveStop);
 
-		// then
-		assertThat(car.getPosition()).isEqualTo(0);
-	}
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 
 }

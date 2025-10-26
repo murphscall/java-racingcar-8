@@ -9,6 +9,5 @@ public class Application {
 
         CarGame carGame = new CarGame(carNames);
         carGame.start(tryCount);
-        System.out.println(carGame.getCars());
     }
 }

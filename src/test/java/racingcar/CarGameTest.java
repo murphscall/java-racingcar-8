@@ -1,28 +1,31 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
-class CarGameTest {
+class CarGameTest extends NsTest {
 
-	@Test
-	void 최대점수와_같은_자동차들을_출력한다() {
+    @Test
+    void 최대점수와_같은_자동차들을_출력한다() {
 
-		CarGame carGame = new CarGame(List.of("pobi", "jiho", "jauk"));
-		List<Car> cars = carGame.getCars();
+        CarGame carGame = new CarGame(List.of("pobi", "woni", "jun"));
 
-		// 테스트 편의상 position 을 직접 셋팅한다.
-		cars.get(0).setPosition(2);
-		cars.get(1).setPosition(4);
-		cars.get(2).setPosition(4);
+        // 테스트 편의상 position 을 직접 셋팅한다.
+        carGame.getCars().get(0).setPosition(5);
+        carGame.getCars().get(1).setPosition(3);
+        carGame.getCars().get(2).setPosition(5);
 
-		List<String> winners = carGame.findWinners();
+        carGame.start(0);
 
-		assertThat(winners).containsExactlyInAnyOrder("jiho", "jauk");
+        assertThat(output()).contains("최종 우승자 : pobi, jun");
 
-	}
+    }
 
+    @Override
+    protected void runMain() {
+
+    }
 }
