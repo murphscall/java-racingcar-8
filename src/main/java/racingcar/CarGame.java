@@ -5,9 +5,11 @@ import java.util.stream.Collectors;
 
 public class CarGame {
     private final List<Car> cars;
+    private final int tryCount;
 
-    public CarGame(List<String> cars) {
+    public CarGame(List<String> cars, int tryCount) {
         this.cars = createCars(cars);
+        this.tryCount = tryCount;
     }
 
     private List<Car> createCars(List<String> carNames) {
@@ -16,7 +18,7 @@ public class CarGame {
                 .collect(Collectors.toList());
     }
 
-    public void start(int tryCount) {
+    public void start() {
         System.out.println();
         System.out.println("실행 결과");
         for (int round = 0; round < tryCount; round++) {

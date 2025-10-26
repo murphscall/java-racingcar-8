@@ -7,7 +7,7 @@ public class Application {
         List<String> carNames = InputView.inputCarNames();
         int tryCount = InputView.tryCount();
 
-        CarGame carGame = new CarGame(carNames);
-        carGame.start(tryCount);
+        CarGame carGame = new CarGame(carNames, tryCount);
+        carGame.start();
     }
 }

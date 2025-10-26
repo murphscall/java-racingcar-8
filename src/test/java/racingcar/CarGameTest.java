@@ -10,15 +10,15 @@ class CarGameTest extends NsTest {
 
     @Test
     void 최대점수와_같은_자동차들을_출력한다() {
-
-        CarGame carGame = new CarGame(List.of("pobi", "woni", "jun"));
+        int tryCount = 0;
+        CarGame carGame = new CarGame(List.of("pobi", "woni", "jun"), tryCount);
 
         // 테스트 편의상 position 을 직접 셋팅한다.
         carGame.getCars().get(0).setPosition(5);
         carGame.getCars().get(1).setPosition(3);
         carGame.getCars().get(2).setPosition(5);
 
-        carGame.start(0);
+        carGame.start();
 
         assertThat(output()).contains("최종 우승자 : pobi, jun");
 
